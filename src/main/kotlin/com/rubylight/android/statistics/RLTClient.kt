@@ -16,4 +16,6 @@ interface RLTClient {
     fun logEvent(eventName: String, eventProperties: EventProperties): RLTClient
 
     fun flush()
+
+    fun getDeviceId(): String
 }

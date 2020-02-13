@@ -45,6 +45,8 @@ class RLTTest: BaseTest() {
 //        Truth.assertThat(context.getDatabasePath(DatabaseSQLiteImpl.DATABASE_NAME).exists()).isTrue()
         Truth.assertThat(statisticsImpl.deviceId).isNotNull()
         Truth.assertThat(statisticsImpl.deviceId)
+            .isEqualTo(statisticsImpl.getDeviceId())
+        Truth.assertThat(statisticsImpl.deviceId)
             .isEqualTo(statisticsImpl.identifyStorage.getDeviceId())
         Truth.assertThat(statisticsImpl.userId).isNull()
         Truth.assertThat(statisticsImpl.identifyStorage.getUserId()).isNull()

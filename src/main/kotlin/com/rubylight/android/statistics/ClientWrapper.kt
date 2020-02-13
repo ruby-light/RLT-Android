@@ -36,6 +36,13 @@ class ClientWrapper : RLTClient {
         client?.flush() ?: ignoreWarning("flush")
     }
 
+    override fun getDeviceId(): String {
+        return client?.getDeviceId() ?: run {
+            ignoreWarning("getDeviceId")
+            return ""
+        }
+    }
+
     private fun ignoreWarning(method: String) {
         warning { String.format("Ignore %s(), RLT not initialized", method) }
     }
