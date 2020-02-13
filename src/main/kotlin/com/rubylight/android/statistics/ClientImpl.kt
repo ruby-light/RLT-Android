@@ -148,7 +148,7 @@ class ClientImpl(
             val deviceId = if (initialDeviceId.isNullOrBlank()) {
                 generateDeviceId()
             } else {
-                info { String.format("Set initial deviceId: %s", initialDeviceId)}
+                info { String.format("Set initial deviceId: %s", initialDeviceId) }
                 initialDeviceId
             }
 
@@ -166,7 +166,7 @@ class ClientImpl(
             if (initialUserId.isNullOrBlank()) {
                 null
             } else {
-                info { String.format("Set initial userId: %s", initialUserId)}
+                info { String.format("Set initial userId: %s", initialUserId) }
                 identifyStorage.setUserId(initialUserId)
                 initialUserId
             }
@@ -188,7 +188,14 @@ class ClientImpl(
         }
         reportsStorage.putReport(reportSequence, reportContent, reportDeviceContent)
 
-        debug { String.format("Saved report: %s, %s, %s", reportSequence, reportContent, reportContent) }
+        debug {
+            String.format(
+                "Saved report: %s, %s, %s",
+                reportSequence,
+                reportContent,
+                reportDeviceContent
+            )
+        }
 
         // remove oldest if full
         val reportsCount = reportsStorage.getReportsCount()
