@@ -6,8 +6,8 @@ import org.json.JSONObject
 
 object Formats {
 
-    const val LIBRARY_NAME = "RLT-Android"
-    const val LIBRARY_VERSION = "1.0.1"
+    const val LIBRARY_NAME = BuildConfig.LIBRARY_PACKAGE_NAME
+    const val LIBRARY_VERSION = BuildConfig.VERSION_NAME
 
     const val SERVER_URL = "http://localhost:8889"
     const val API_VERSION = "1"
