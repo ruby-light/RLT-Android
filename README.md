@@ -2,7 +2,7 @@
 
 Native Android SDK
 
-### Download
+## Setup
 
 Download via Gradle:
 
@@ -10,9 +10,21 @@ Download via Gradle:
 implementation 'com.rubylight:rlt-android:1.0.1'
 ```
 
-### Usage
+Download via Maven:
 
-Initialize:
+```xml
+<dependency>
+  <groupId>com.rubylight</groupId>
+  <artifactId>rlt-android</artifactId>
+  <version>1.0.1</version>
+  <type>pom</type>
+</dependency>
+```
+
+## Usage
+
+#### Kotlin
+
 ```kotlin
 
     RLT.initialize(context, "<API_KEY>", 
@@ -33,26 +45,11 @@ Initialize:
                     .trackLanguage()
             )
     )
-        
-```
-
-Log user properties:
-```kotlin
     
     RLT.getClient().logUserProperties(
         UserProperties().set("gender", "male"))
 
-```
-
-Set application user id: 
-```kotlin
-
     RLT.getClient().setUserId("123123-341231")
-
-```
-
-Log events: 
-```kotlin
 
     RLT.getClient().logEvent("StartConversation",
         EventProperties().set("type", "private"))
@@ -61,29 +58,42 @@ Log events:
 
 ```
 
-### License 
+#### Java
+
+```java
+
+        RLT.INSTANCE.initialize(context, "<API_KEY>",
+                new InitConfig()
+                        .setServerUrl("https://stats.mydomain.com")
+                        .enableStartAppEvent()
+                        .enableSessionTracking(app)
+                        .setDevicePropertyConfig(
+                                new DevicePropertyConfig()
+                                        .trackPlatform()
+                                        .trackManufacturer()
+                                        .trackBrand()
+                                        .trackModel()
+                                        .trackOsVersion()
+                                        .trackCountry()
+                                        .trackAppVersion()
+                                        .trackCarrier()
+                                        .trackLanguage()
+                        )
+        );
+
+        RLT.INSTANCE.getClient().logUserProperties(new UserProperties().set("gender", "male"));
+
+        RLTClient client = RLT.INSTANCE.getClient();
+        client.setUserId("123123-341231");
+
+        client.logEvent("StartConversation", new EventProperties().set("type", "private"));
+
+        client.logEvent("EndConversation");
+        
+        client.flush();
 
 ```
-The MIT License (MIT)
 
-Copyright © 2020 Rubylight
+## License 
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal 
-in the Software without restriction, including without limitation the rights 
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell 
-copies of the Software, and to permit persons to whom the Software is furnished
-to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
-THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR 
-OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
-ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
-```
-
+`RLT-Android` is distributed under the terms and conditions of the [MIT license](https://github.com/ruby-light/RLT-Android/blob/master/LICENSE).

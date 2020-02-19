@@ -86,7 +86,7 @@ dependencies {
 // https://github.com/novoda/bintray-release
 
 publish {
-    userOrg = "rubyspark"
+    userOrg = "rubylight"
     groupId = "com.rubylight"
     artifactId = "rlt-android"
     publishVersion = "${libraryVersion}"
@@ -94,4 +94,4 @@ publish {
     website = "https://github.com/ruby-light/RLT-Android"
 }
 
-// 4a3a7e21d3a581f0c29019329e6322f98665b3f0
+// ./gradlew clean build bintrayUpload -PbintrayUser=rubylight -PbintrayKey=<> -PdryRun=false
