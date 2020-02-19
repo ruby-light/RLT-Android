@@ -55,6 +55,7 @@ Download via Maven:
         EventProperties().set("type", "private"))
 
     RLT.getClient().logEvent("EndConversation")
+    RLT.getClient().flush()
 
 ```
 
@@ -62,35 +63,35 @@ Download via Maven:
 
 ```java
 
-        RLT.INSTANCE.initialize(context, "<API_KEY>",
-                new InitConfig()
-                        .setServerUrl("https://stats.mydomain.com")
-                        .enableStartAppEvent()
-                        .enableSessionTracking(app)
-                        .setDevicePropertyConfig(
-                                new DevicePropertyConfig()
-                                        .trackPlatform()
-                                        .trackManufacturer()
-                                        .trackBrand()
-                                        .trackModel()
-                                        .trackOsVersion()
-                                        .trackCountry()
-                                        .trackAppVersion()
-                                        .trackCarrier()
-                                        .trackLanguage()
-                        )
-        );
+    RLT.INSTANCE.initialize(context, "<API_KEY>",
+            new InitConfig()
+                    .setServerUrl("https://stats.mydomain.com")
+                    .enableStartAppEvent()
+                    .enableSessionTracking(app)
+                    .setDevicePropertyConfig(
+                            new DevicePropertyConfig()
+                                    .trackPlatform()
+                                    .trackManufacturer()
+                                    .trackBrand()
+                                    .trackModel()
+                                    .trackOsVersion()
+                                    .trackCountry()
+                                    .trackAppVersion()
+                                    .trackCarrier()
+                                    .trackLanguage()
+                    )
+    );
 
-        RLT.INSTANCE.getClient().logUserProperties(new UserProperties().set("gender", "male"));
+    RLT.INSTANCE.getClient().logUserProperties(new UserProperties().set("gender", "male"));
 
-        RLTClient client = RLT.INSTANCE.getClient();
-        client.setUserId("123123-341231");
+    RLTClient client = RLT.INSTANCE.getClient();
+    client.setUserId("123123-341231");
 
-        client.logEvent("StartConversation", new EventProperties().set("type", "private"));
+    client.logEvent("StartConversation", new EventProperties().set("type", "private"));
 
-        client.logEvent("EndConversation");
-        
-        client.flush();
+    client.logEvent("EndConversation");
+    
+    client.flush();
 
 ```
 
